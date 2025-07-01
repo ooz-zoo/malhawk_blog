@@ -1,0 +1,171 @@
+/* globals.css */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Add fixed size image styles */
+.fixed-size-image {
+  max-width: 800px; /* Adjust the width to your preference */
+  max-height: 600px; /* Adjust the height to your preference */
+  width: 100%;
+  height: auto;
+  object-fit: cover; /* Ensures the image covers the specified area without distortion */
+}
+
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Header */
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem; /* Add spacing between elements */
+  margin-bottom: 2rem; /* Add margin below the header */
+}
+
+.back-link {
+  color: #00ff41;
+  text-decoration: none;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #00ff41;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.date {
+  color: #9ca3af;
+  font-size: 0.9rem;
+}
+
+.date span {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Content with TOC Layout */
+.content-with-toc {
+  display: flex;
+  gap: 2rem; /* Add spacing between TOC and content */
+}
+
+/* Content */
+.content {
+  flex: 1; /* Take up remaining space */
+  max-width: 800px; /* Limit content width for readability */
+  margin: 0 auto; /* Center the content */
+}
+
+/* Floating TOC */
+.floating-toc {
+  position: sticky;
+  top: 100px; /* Adjust based on your header height */
+  align-self: flex-start; /* Align to the top of the container */
+  background: #1a1a1a;
+  padding: 1rem;
+  border-left: 4px solid #00ff41;
+  border-radius: 0.5rem;
+  width: 200px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Floating TOC List */
+.floating-toc ul {
+  list-style: none;
+  padding: 0;
+}
+
+.floating-toc ul li {
+  margin: 0.5rem 0;
+}
+
+.floating-toc ul li a {
+  color: #9ca3af;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.floating-toc ul li a:hover {
+  color: #00ff41;
+}
+
+/* Hide TOC on smaller screens */
+@media (max-width: 1024px) {
+  .floating-toc {
+    display: none;
+  }
+}
+
+/* Hamburger Menu Styles */
+.hamburger {
+  display: none; /* Hide by default */
+  cursor: pointer;
+  padding: 0.5rem;
+  z-index: 1000; /* Ensure it stays on top */
+}
+
+.hamburger svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+/* Sidebar Styles */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 16rem; /* Same as your sidebar width */
+  height: 100vh;
+  transition: left 0.3s ease-in-out;
+  z-index: 999; /* Ensure it stays below the hamburger */
+  background: #1a1c22; /* Match your sidebar background */
+  border-right: 1px solid #30343b; /* Match your sidebar border */
+}
+
+/* Show hamburger and adjust sidebar on small screens */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block; /* Show the hamburger */
+  }
+
+  /* Hide the sidebar by default on small screens */
+  .sidebar {
+    left: -100%; /* Hide off-screen */
+  }
+
+  /* Show the sidebar when isOpen is true */
+  .sidebar.open {
+    left: 0;
+  }
+}
