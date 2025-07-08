@@ -8,8 +8,9 @@ export default function Header() {
   return (
     <header className="bg-black text-gray-100 px-6 py-4 font-mono border-b border-[#30343B]">
       <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between">
+        <div className="binary-background"></div> 
 
-        {/* Logo Section with Glitch Effect */}
+        
         <div className="flex items-center gap-3 group">
           <div className="relative">
             <img 
@@ -49,16 +50,15 @@ export default function Header() {
               <a 
                 href="/blog" 
                 className={`flex items-center gap-2 text-lg tracking-widest group transition-all duration-300 ${
-                  pathname === '/blog' ? 'text-green-400' : 'text-gray-300 group-hover:text-[#00FF41]'
+                  pathname.startsWith('/blog') ? 'text-green-400' : 'text-gray-300 group-hover:text-[#00FF41]'
                 }`}
               >
                 <span className={`text-green-400 ${
-                  pathname === '/blog' ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
+                  pathname.startsWith('/blog') ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
                 }`}>∎</span>
                 <span>Blog</span>
               </a>
             </li>
-
           </ul>
         </nav>
 
