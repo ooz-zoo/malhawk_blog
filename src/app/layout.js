@@ -1,5 +1,4 @@
 "use client";
-
 import './styles/globals.css';
 import Footer from './components/footer';
 import Sidebar from './components/navbar';
@@ -22,7 +21,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${theme} flex flex-col min-h-screen bg-[#1A1D21] text-white`}>
         <Sidebar theme={theme} setTheme={setTheme} />
-        <main className="flex-grow max-w-6xl mx-auto px-6 py-8 w-full">
+        <main className="flex-grow w-full px-4 sm:px-6 md:max-w-6xl md:mx-auto md:py-8">
           {children}
         </main>
         <Footer />

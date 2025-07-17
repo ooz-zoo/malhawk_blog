@@ -31,24 +31,51 @@ export default async function BlogPost({ params }) {
   post.content = doc.body.innerHTML;
 
   return (
-    <div className="flex max-w-7xl mx-auto px-4 py-12 gap-10">
-      {/* Table of Contents */}
+    <div className="flex flex-col lg:flex-row max-w-7xl mx-auto px-4 sm:px-6 py-8 gap-8">
+      {/* Mobile TOC Dropdown */}
       {toc.length > 0 && (
-        <aside className="hidden lg:block w-64 p-4 text-sm bg-[#16191F] border border-[#2a2d33] rounded-lg shadow-md sticky top-24 h-fit">
-          <h2 className="text-[#00FF41] font-bold mb-3">Table of Contents</h2>
-          <ul className="space-y-2">
+        <details className="lg:hidden mb-6 bg-[#16191F] border border-[#2a2d33] rounded-lg p-4">
+          <summary className="text-[#00FF41] font-bold cursor-pointer">
+            Table of Contents
+          </summary>
+          <ul className="mt-3 space-y-2 pl-4">
             {toc.map(item => (
-              <li key={item.id} className={`ml-${(parseInt(item.level[1]) - 1) * 4}`}>
-                <a href={`#${item.id}`} className="hover:text-[#00FF41] transition block">
+              <li key={item.id} className={`ml-${(parseInt(item.level[1]) - 1) * 2}`}>
+                <a 
+                  href={`#${item.id}`} 
+                  className="hover:text-[#00FF41] transition block py-1 text-sm"
+                >
                   {item.text}
                 </a>
               </li>
             ))}
           </ul>
-        </aside>
+        </details>
       )}
 
-      {/* Blog Content */}
+      {/* Desktop TOC */}
+      
+      {toc.length > 0 && (
+        <div className="hidden lg:block relative w-64 flex-shrink-0">
+          <aside 
+            className="w-64 p-9 text-sm bg-[#16191F] border border-[#2a2d33] rounded-lg shadow-md fixed"
+            style={{ height: 'fit-content', top: 'calc(6rem + 35px)' }} // 6rem = your header height
+          >
+            <h2 className="text-[#00FF41] font-bold mb-3">Table of Contents</h2>
+            <ul className="space-y-2">
+              {toc.map(item => (
+                <li key={item.id} className={`ml-${(parseInt(item.level[1]) - 1) * 4}`}>
+                  <a href={`#${item.id}`} className="hover:text-[#00FF41] transition block">
+                    {item.text}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </aside>
+        </div>
+      )}
+
+       {/* Blog Content */}
       <article className="flex-1 font-mono bg-[#0F1115] text-white rounded-2xl shadow-lg border border-[#1f1f1f] p-6">
         {/* Post Header */}
         <header className="mb-10 border-b border-gray-700 pb-6">

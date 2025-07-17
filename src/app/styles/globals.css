@@ -74,71 +74,20 @@ body {
   gap: 0.5rem;
 }
 
-/* Content with TOC Layout */
+
 .content-with-toc {
   display: flex;
-  gap: 2rem; /* Add spacing between TOC and content */
+  gap: 2rem; 
 }
 
 /* Content */
 .content {
-  flex: 1; /* Take up remaining space */
-  max-width: 800px; /* Limit content width for readability */
-  margin: 0 auto; /* Center the content */
+  flex: 1; 
+  max-width: 800px; 
+  margin: 0 auto; 
 }
 
-/* Floating TOC */
-.floating-toc {
-  position: sticky;
-  top: 100px; /* Adjust based on your header height */
-  align-self: flex-start; /* Align to the top of the container */
-  background: #1a1a1a;
-  padding: 1rem;
-  border-left: 4px solid #00ff41;
-  border-radius: 0.5rem;
-  width: 200px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
 
-/* Floating TOC List */
-.floating-toc ul {
-  list-style: none;
-  padding: 0;
-}
-
-.floating-toc ul li {
-  margin: 0.5rem 0;
-}
-
-.floating-toc ul li a {
-  color: #9ca3af;
-  text-decoration: none;
-  transition: color 0.2s;
-}
-
-.floating-toc ul li a:hover {
-  color: #00ff41;
-}
-
-/* Hide TOC on smaller screens */
-@media (max-width: 1024px) {
-  .floating-toc {
-    display: none;
-  }
-}
-
-/* Hamburger Menu Styles */
-.hamburger {
-  display: none; /* Hide by default */
-  cursor: pointer;
-  padding: 0.5rem;
-  z-index: 1000; /* Ensure it stays on top */
-}
-
-.hamburger svg {
-  width: 1.5rem;
-  height: 1.5rem;
-}
 
 /* Sidebar Styles */
 .sidebar {
@@ -153,22 +102,7 @@ body {
   border-right: 1px solid #30343b; /* Match your sidebar border */
 }
 
-/* Show hamburger and adjust sidebar on small screens */
-@media (max-width: 768px) {
-  .hamburger {
-    display: block; /* Show the hamburger */
-  }
 
-  /* Hide the sidebar by default on small screens */
-  .sidebar {
-    left: -100%; /* Hide off-screen */
-  }
-
-  /* Show the sidebar when isOpen is true */
-  .sidebar.open {
-    left: 0;
-  }
-}
 
 .binary-background {
   background-image: repeating-linear-gradient(
@@ -202,4 +136,136 @@ body {
 
 .binary-background {
   animation: matrixScroll 60s linear infinite;
+}
+
+
+/* Base container for all pages */
+.page-container {
+  width: 100%;
+  padding: 1rem;
+  margin: 0 auto;
+}
+
+/* Responsive content widths */
+@media (min-width: 640px) {
+  .page-container {
+    padding: 1.5rem;
+    max-width: 640px;
+  }
+}
+
+@media (min-width: 768px) {
+  .page-container {
+    max-width: 768px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .page-container {
+    max-width: 1024px;
+    padding: 2rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .page-container {
+    max-width: 1280px;
+  }
+}
+
+/* Prevent horizontal overflow */
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+/* Responsive typography */
+.content p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .content p {
+    font-size: 1.125rem;
+  }
+}
+
+/* Responsive images */
+.content img {
+  max-width: 100%;
+  height: auto;
+  margin: 1rem auto;
+  display: block;
+}
+
+/* TOC adjustments for mobile */
+@media (max-width: 1024px) {
+  .content-with-toc {
+    flex-direction: column;
+  }
+  
+  .floating-toc {
+    position: static;
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+}
+
+/* Mobile-first content styling */
+.content-container {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.content-container h2,
+.content-container h3 {
+  scroll-margin-top: 1rem;
+}
+
+.content-container img {
+  max-width: 100%;
+  height: auto;
+  margin: 1.5rem auto;
+  border-radius: 0.5rem;
+}
+
+.content-container pre {
+  overflow-x: auto;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background: #1A1D21 !important;
+}
+
+.content-container code {
+  font-family: 'Courier New', monospace;
+  font-size: 0.9em;
+}
+
+/* Responsive tables */
+.content-container table {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  white-space: nowrap;
+  margin: 1.5rem 0;
+  border-collapse: collapse;
+}
+
+.content-container th,
+.content-container td {
+  padding: 0.75rem;
+  border: 1px solid #2a2d33;
+}
+
+@media (min-width: 768px) {
+  .content-container {
+    padding-right: 0.5rem;
+  }
+  
+  .content-container table {
+    display: table;
+    white-space: normal;
+  }
 }
