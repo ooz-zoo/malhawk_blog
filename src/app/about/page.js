@@ -48,7 +48,7 @@ I’m also exploring exploit development (for ethical purposes) and plan to dive
         </div>
       </motion.div>
 
-      {/* Current Learning Path */}
+      {/* Current Learning Path
       <motion.div
         className="system-scan bg-black/40 p-6 rounded-lg border border-yellow-500"
         initial={{ opacity: 0 }}
@@ -62,7 +62,7 @@ I’m also exploring exploit development (for ethical purposes) and plan to dive
         <div className="space-y-3 text-gray-300">
           <p>➊ In-depth Static Analysis</p>
         </div>
-      </motion.div>
+      </motion.div> */}
     </motion.section>
   );
 }
