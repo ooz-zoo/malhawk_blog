@@ -4,6 +4,8 @@ import Link from 'next/link';
 import { FiCalendar, FiArrowLeft } from 'react-icons/fi';
 import { JSDOM } from 'jsdom';
 
+
+
 export async function generateStaticParams() {
   const posts = await getPosts();
   return posts.map(post => ({ slug: post.slug }));
@@ -39,19 +41,27 @@ export default async function BlogPost({ params }) {
             Table of Contents
           </summary>
           <ul className="mt-3 space-y-2 pl-4">
-            {toc.map(item => (
-              <li key={item.id} className={`ml-${(parseInt(item.level[1]) - 1) * 2}`}>
+          
+          {toc.map(item => {
+            const level = parseInt(item.level[1]);
+            const paddingClass = level === 2 ? 'pl-0' : level === 3 ? 'pl-4' : 'pl-8';
+            
+            return (
+              <li key={item.id} className={`${paddingClass} py-1`}>
                 <a 
                   href={`#${item.id}`} 
-                  className="hover:text-[#00FF41] transition block py-1 text-sm"
+                  className="hover:text-[#00FF41] transition block text-sm"
                 >
                   {item.text}
                 </a>
               </li>
-            ))}
+            );
+          })}
           </ul>
         </details>
       )}
+
+  
 
       {/* Desktop TOC */}
       
@@ -59,17 +69,26 @@ export default async function BlogPost({ params }) {
         <div className="hidden lg:block relative w-64 flex-shrink-0">
           <aside 
             className="w-64 p-9 text-sm bg-[#16191F] border border-[#2a2d33] rounded-lg shadow-md fixed"
-            style={{ height: 'fit-content', top: 'calc(6rem + 35px)' }} // 6rem = your header height
+            style={{ height: 'fit-content', top: 'calc(6rem + 35px)' }}
           >
             <h2 className="text-[#00FF41] font-bold mb-3">Table of Contents</h2>
             <ul className="space-y-2">
-              {toc.map(item => (
-                <li key={item.id} className={`ml-${(parseInt(item.level[1]) - 1) * 4}`}>
-                  <a href={`#${item.id}`} className="hover:text-[#00FF41] transition block">
+              
+            {toc.map(item => {
+              const level = parseInt(item.level[1]);
+              const paddingClass = level === 2 ? 'pl-0' : level === 3 ? 'pl-4' : 'pl-8';
+              
+              return (
+                <li key={item.id} className={`${paddingClass} py-1`}>
+                  <a 
+                    href={`#${item.id}`} 
+                    className="hover:text-[#00FF41] transition block text-sm"
+                  >
                     {item.text}
                   </a>
                 </li>
-              ))}
+              );
+            })}
             </ul>
           </aside>
         </div>
@@ -107,10 +126,13 @@ export default async function BlogPost({ params }) {
         </header>
 
         {/* Post Content */}
-        <div 
-          className="prose prose-invert max-w-none text-lg leading-relaxed"
-          dangerouslySetInnerHTML={{ __html: post.content }} 
-        />
+        
+
+        <div
+  className="prose prose-invert max-w-none text-lg leading-relaxed break-words [overflow-wrap:anywhere] [word-break:break-word]"
+  dangerouslySetInnerHTML={{ __html: post.content }}
+/>
+
 
         {/* Back to Blog */}
         <Link 

@@ -94,12 +94,12 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  width: 16rem; /* Same as your sidebar width */
+  width: 16rem;
   height: 100vh;
   transition: left 0.3s ease-in-out;
-  z-index: 999; /* Ensure it stays below the hamburger */
-  background: #1a1c22; /* Match your sidebar background */
-  border-right: 1px solid #30343b; /* Match your sidebar border */
+  z-index: 999; 
+  background: #1a1c22; 
+  border-right: 1px solid #30343b; 
 }
 
 
@@ -269,3 +269,21 @@ html, body {
     white-space: normal;
   }
 }
+
+/* mobile table scroll   */
+
+.prose table { 
+  display: block;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.prose img {
+  transition: transform 0.3s ease;
+  cursor: zoom-in;
+}
+
+.prose img:hover {
+  transform: scale(1.5);
+}
+

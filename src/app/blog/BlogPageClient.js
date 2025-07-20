@@ -31,7 +31,8 @@ export default function BlogPageClient({ initialPosts }) {
               href={`/blog/${post.slug}`}
               className="block group relative border border-[#30343B] rounded-lg p-6 hover:border-[#00FF41] transition-all duration-300 bg-gradient-to-r from-[#1A1C22]/50 to-[#2A2D32]/50"
             >
-              <div className="flex items-start gap-6">
+              {/* Stack on mobile; row from sm+ */}
+              <div className="flex flex-col sm:flex-row items-start gap-6">
                 {post.image && (
                   <div className="w-32 h-32 shrink-0 relative rounded-lg overflow-hidden border border-[#30343B]">
                     <img
@@ -42,13 +43,14 @@ export default function BlogPageClient({ initialPosts }) {
                   </div>
                 )}
 
-                <div className="flex-1">
-                  <h2 className="text-2xl font-bold text-gray-100 font-mono mb-2">
+                {/* Text column must be allowed to shrink */}
+                <div className="flex-1 min-w-0 w-full">
+                  <h2 className="text-2xl font-bold text-gray-100 font-mono mb-2 break-words whitespace-normal max-w-full overflow-visible">
                     {post.title}
                   </h2>
 
-                  <div className="flex items-center gap-4 text-sm text-gray-400 mb-4">
-                    <span className="flex items-center gap-1">
+                  <div className="flex flex-wrap items-center gap-4 text-sm text-gray-400 mb-4">
+                    <span className="flex items-center gap-1 shrink-0">
                       <FiCalendar className="text-cyan-400" />
                       {new Date(post.date).toLocaleDateString("en-US", {
                         year: "numeric",
@@ -57,7 +59,7 @@ export default function BlogPageClient({ initialPosts }) {
                       })}
                     </span>
                     {post.tags?.length > 0 && (
-                      <span className="flex items-center gap-2">
+                      <span className="flex flex-wrap items-center gap-2">
                         {post.tags.map((tag) => (
                           <span
                             key={tag}
@@ -71,7 +73,9 @@ export default function BlogPageClient({ initialPosts }) {
                   </div>
 
                   {post.excerpt && (
-                    <p className="text-gray-300">{post.excerpt}</p>
+                    <p className="text-gray-300 break-all whitespace-normal max-w-full overflow-visible [overflow-wrap:anywhere]">
+                      {post.excerpt}
+                    </p>
                   )}
 
                   <div className="mt-4 flex items-center gap-2 text-[#00FF41]">

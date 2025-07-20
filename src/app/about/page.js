@@ -34,9 +34,16 @@ export default function AboutPage() {
           
           <div className="font-mono text-green-400 space-y-2">
             <p className="animate-pulse-fast">$ whoami</p>
-            <p> MALHAWK: Malware Analyst </p>
-            <p className="animate-pulse-fast">$ cat /proc/mission</p>
-            <p> Objective:  Learn <br></br> Share my journey and growth in malware analysis <br></br>and enjoy!!! </p>
+            <div className="space-y-3 text-gray-300">
+            <p> My Name is Joy. I am a security software developer and a Malware Analyst. I enjoy the treasure-hunt and puzzle-like challenges that come with analyzing malware.
+I’m also exploring exploit development (for ethical purposes) and plan to dive deeper into it along the way.  </p> </div>
+            <div className="font-mono text-green-400 space-y-2">
+            <p className="animate-pulse-fast">$ cat /proc/mission</p> </div>
+            <div className="space-y-3 text-gray-300">
+            <p> This blog documents my security research journey, with a focus on malware analysis.</p> 
+            <p>My goal is to understand how attackers think, share insights, build more resilient software, and enjoy the process!</p>
+            
+            </div>
           </div>
         </div>
       </motion.div>
@@ -53,9 +60,7 @@ export default function AboutPage() {
           <h3 className="text-2xl font-bold text-yellow-500">Current Learning Pipeline</h3>
         </div>
         <div className="space-y-3 text-gray-300">
-          <p>➊ PE header analysis</p>
-          <p>➋ File Identification </p>
-          <p>➌ Hashing and String Extraction</p>
+          <p>➊ In-depth Static Analysis</p>
         </div>
       </motion.div>
     </motion.section>

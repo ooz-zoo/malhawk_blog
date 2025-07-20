@@ -13,6 +13,7 @@ export default function Header() {
   return (
     <header className="bg-black text-gray-100 px-4 py-3 font-mono border-b border-[#30343B] sticky top-0 z-50">
       <div className="max-w-5xl mx-auto">
+        {/* <div className="binary-background"></div> */}
         <div className="flex items-center justify-between md:hidden">
           <div className="flex items-center gap-3 group">
             <div className="relative">
